@@ -145,3 +145,12 @@ LOGGING = {
         },
     }
 }
+
+# Enforce our local_settings policy.
+try:
+    from local_settings import *
+except ImportError:
+    from django.core.exceptions import ImproperlyConfigured
+    raise ImproperlyConfigured('A local_settings module is required, see local_settings.template')
+
+
